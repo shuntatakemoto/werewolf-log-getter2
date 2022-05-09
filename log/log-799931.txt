@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>人狼Online
+    </title>
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="https://s3.amazonaws.com/jetstrap-site/lib/bootstrap/2.3.0/css/bootstrap.css" rel="stylesheet">
+    <link href="https://s3.amazonaws.com/jetstrap-site/lib/bootstrap/2.3.0/css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+      </script>
+    <![endif]-->
+    <!-- Le fav and touch icons -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://s3.amazonaws.com/jetstrap-site/lib/bootstrap/2.3.0/js/bootstrap.js"></script>
+    
+    <meta name="description" content="スマホとPCでオンライン対戦できる人狼ゲームです。"/>
+    <meta name="keywords" content="人狼,ワードウルフ,iPhone,Android,スマホ,PC,オンライン,人狼Online" />
+    
+    <link rel="apple-touch-icon-precomposed" href="/img/jinro_logo.jpg">
+    <meta name="format-detection" content="telephone=no" /> 
+    <script src="/js/lib.js?3"></script>
+    <link rel="icon" href="/img/apple-touch-icon.png" type="image/png" />
+    
+    <!-- アドレスバー等のブラウザのUIを非表示 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- ホーム画面に表示されるアプリ名 -->
+    <meta name="apple-mobile-web-app-title" content="人狼Online">
+    <!-- ホーム画面に表示されるアプリアイコン -->
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <!-- ウェブアプリマニフェストの読み込み -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <meta content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport" />  
+    <meta content="yes" name="apple-mobile-web-app-capable" /> 
+    <meta name=”apple-mobile-web-app-status-bar-style” content=”black-translucent” />
+    <link rel="apple-touch-startup-image" href="/img/jinro_startup.png" sizez="640x1096">
+    <link rel="apple-touch-startup-image" href="/img/jinro_startup_640x920.png" sizez="640x920">
+    <link rel="apple-touch-icon-precomposed" href="/img/jinro_logo.jpg">
+    <script src="/js/iosFullscreen.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <link href="/css/bootstrapSwitch.css" rel="stylesheet">
+    <script src="/js/jquery.toggle.buttons.js"></script>
+    
+    
+    <link href="/css/base.css" rel="stylesheet">
+    <!-- adsense -->
+    <script data-ad-client="ca-pub-1495090989864060" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>      </head>
+<script>
+// service workerの登録関係
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service_worker.js').then(function(registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }).catch(function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+    });
+}
+// アプリに送信
+function app(msg) {
+  }
+function isApp() {
+  return false;
+}
+function isAppAnd() {
+  return false;
+}
+function isAppIos() {
+  return false;
+}
+</script>
+  <body>
+
+
+<div class="container">
+<div class="title big">
+<a href="/" class="btn">
+<i class="icon-home"></i>
+</a>
+<a class="btn" onclick="history.back()">
+<i class="icon-arrow-left"></i>
+</a>
+ログ-渕田研村-49
+</div>
+
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span6">
+            <div id="message" class="message">
+                <div id="message_text">
+                
+                </div>
+            </div>
+  </div>
+  <div class="span6">
+
+<style>
+body {
+    padding-top: 0px;
+}
+#message {
+    background-color: rgba(0,0,0,0.5);/*rgba(245,249,240,1);*/
+    border-radius: 10px;
+    border: 1px solid;
+    padding: 5px;
+    margin-bottom: 5px;
+    overflow-y: scroll;
+    height:300px;
+    text-shadow: none;/*1px 1px 1px #666;*/
+    color: white;
+    font-size: x-small;
+}
+.message .from{
+font-size:x-small;
+color: #999;
+}
+.message .from-system{
+color: skyblue;
+}
+.message.text.important{
+color: red;
+}
+.message .text{
+font-size:small;
+}
+.message .text-system{
+color: skyblue;
+}
+.message .text-nonimportant{
+color: gray;
+}
+.message .text-important{
+color: red;
+}
+</style>
+<link href="/css/bootstrapSwitch.css" rel="stylesheet">
+<script src="/js/jquery.toggle.buttons.js"></script>
+<script src="/js/jquery.cookie.js"></script>
+<script>
+$(document).ready( function() {
+    // メッセージ枠の高さをブラウザの画面にあわせて変更
+    //var c_width = $('html').prop('clientWidth');
+    fitWindowSize();
+    window.onresize = function() {
+        fitWindowSize();
+    };
+
+    
+    $('#ngWatcher-toggle-button').toggleButtons('setState', $.cookie('NG_WATCHER')==1 ? true : false);
+    $('#ngWatcher-toggle-button').toggleButtons({
+      onChange: function ($el, status, e) {
+        $.cookie('NG_WATCHER', status ? 1 : 0, {expires: 3650});
+	location.reload();
+      }
+    });
+
+    var message = [{"id":"1158346081","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u4eba\u72fc\u304c\u5168\u6ec5\u3057\u307e\u3057\u305f!\u3010\u6751\u4eba\u30c1\u30fc\u30e0\u3011\u306e\u52dd\u5229\u3067\u3059!","created":"2021-10-22 21:29:03","color":"skyblue","job":null},{"id":"1158346080","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3010\u6295\u7968\u7d50\u679c\u3011<br \/>\u304a\u306b\u304e\u308a(0\u7968)\u306e\u6295\u7968\u5148\u2192\u3042\u3042\u3042\u3042<br \/>\u30c8\u30fc\u30e9\u30b9(1\u7968)\u306e\u6295\u7968\u5148\u2192\u3042\u3042\u3042\u3042<br \/>\u725b\u7530\u3079\u3053\u3089(0\u7968)\u306e\u6295\u7968\u5148\u2192\u3042\u3042\u3042\u3042<br \/>\u3042\u3042\u3042\u3042(3\u7968)\u306e\u6295\u7968\u5148\u2192\u30c8\u30fc\u30e9\u30b9<br \/> \u6295\u7968\u306e\u7d50\u679c\u3010\u3042\u3042\u3042\u3042\u3011\u3055\u3093\u304c\u51e6\u5211\u3055\u308c\u307e\u3059","created":"2021-10-22 21:29:03","color":"skyblue","job":null},{"id":"1158346079","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3042\u3042\u3042\u3042\u3055\u3093\u304c\u6b7b\u4ea1\u3057\u307e\u3057\u305f","created":"2021-10-22 21:29:03","color":"skyblue","job":null},{"id":"1158346078","from_user":"\u3042\u3042\u3042\u3042","to_user":"GM","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6295\u7968@\u3042\u3042\u3042\u3042\u2192\u30c8\u30fc\u30e9\u30b9","created":"2021-10-22 21:29:03","color":"red","job":"\u4eba\u72fc"},{"id":"1158346038","from_user":"\u30c8\u30fc\u30e9\u30b9","to_user":"GM","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6295\u7968@\u30c8\u30fc\u30e9\u30b9\u2192\u3042\u3042\u3042\u3042","created":"2021-10-22 21:28:49","color":"perple","job":"\u5360\u3044\u5e2b"},{"id":"1158346034","from_user":"\u725b\u7530\u3079\u3053\u3089","to_user":"GM","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6295\u7968@\u725b\u7530\u3079\u3053\u3089\u2192\u3042\u3042\u3042\u3042","created":"2021-10-22 21:28:46","color":"chocolate","job":"\u6751\u4eba"},{"id":"1158346030","from_user":"\u304a\u306b\u304e\u308a","to_user":"GM","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6295\u7968@\u304a\u306b\u304e\u308a\u2192\u3042\u3042\u3042\u3042","created":"2021-10-22 21:28:43","color":"beige","job":"\u72e9\u4eba"},{"id":"1158346013","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6295\u7968\u6642\u9593\u306b\u306a\u308a\u307e\u3057\u305f\u3002\u8a71\u3059\u306e\u3092\u3084\u3081\u3066\u304f\u3060\u3055\u3044\u3002","created":"2021-10-22 21:28:36","color":"skyblue","job":"\u72e9\u4eba"},{"id":"1158345998","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u305d\u306e\u610f\u6c17\u3084\u826f\u3057\uff01","created":"2021-10-22 21:28:29","color":"beige","job":"\u72e9\u4eba"},{"id":"1158345977","from_user":"\u30a4\u30be\u30a6","to_user":"\u970a\u754c","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u307b\u307c\u78ba\u5b9a\u3067\u3059\u306d\u3002\u79c1\u306e\u304c\u6b7b\u3093\u3060\u7532\u6590\u304c\u3042\u308a\u307e\u3057\u305f","created":"2021-10-22 21:28:18","color":"lightgreen","job":"\u6751\u4eba"},{"id":"1158345969","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5b9f\u306f\u30c8\u30fc\u30e9\u30b9\u3055\u3093\u304c\u72c2\u4eba\u3067\u307a\u3053\u3089\u3055\u3093\u304c\u4eba\u72fc\u3068\u3044\u3046\u30eb\u30fc\u30c8\u3082\u7121\u304f\u306f\u306a\u3044\u3067\u3059\u304c","created":"2021-10-22 21:28:14","color":"beige","job":"\u72e9\u4eba"},{"id":"1158345946","from_user":"\u3042\u3042\u3042\u3042","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u53cd\u8ad6\u306f\u3042\u308a\u307e\u305b\u3093\u3001\u6295\u4e86\u3057\u307e\u3059","created":"2021-10-22 21:28:01","color":"red","job":"\u4eba\u72fc"},{"id":"1158345897","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u56e0\u307f\u306b\u50d5\u306f\u30c8\u30fc\u30e9\u30b9\u3055\u3093\u3092\u5b88\u308a\u306b\u884c\u3063\u3066\u30ac\u30fc\u30c9\u3067\u304d\u305f\u306e\u3067\u3001\u30c8\u30fc\u30e9\u30b9\u3055\u3093\u306f\u4eba\u72fc\u3067\u306f\u306a\u3044\u3067\u3059","created":"2021-10-22 21:27:31","color":"beige","job":"\u72e9\u4eba"},{"id":"1158345826","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3042\u3042\u3042\u3042\u3055\u3093\u306f\u81ea\u5206\u304c\u9055\u3046\u3068\u8a00\u3046\u306e\u3067\u3042\u308c\u3070\u4f55\u304b\u767a\u8a00\u3092\u304a\u9858\u3044\u3057\u307e\u3059\uff01","created":"2021-10-22 21:26:52","color":"beige","job":"\u72e9\u4eba"},{"id":"1158345747","from_user":"\u30a4\u30be\u30a6","to_user":"\u970a\u754c","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u72c2\u4eba\u304c\u5f79\u304c\u3051\u304b\u30fc","created":"2021-10-22 21:26:14","color":"lightgreen","job":"\u6751\u4eba"},{"id":"1158345635","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u30c8\u30fc\u30e9\u30b9\u3055\u3093\u306e\u5360\u3044\u3092\u7d14\u7c8b\u306b\u4fe1\u3058\u308c\u3070\u3042\u3042\u3042\u3042\u3055\u3093\u304c\u4eba\u72fc\u3067\u3059\u306d","created":"2021-10-22 21:25:14","color":"beige","job":"\u72e9\u4eba"},{"id":"1158345613","from_user":"\u725b\u7530\u3079\u3053\u3089","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3042\u308a\u304c\u3068\u3046\u3054\u3056\u3044\u307e\u3059\uff01","created":"2021-10-22 21:25:02","color":"chocolate","job":"\u6751\u4eba"},{"id":"1158345567","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u308f\u3056\u308f\u3056\u51fa\u3066\u304d\u305f\u306e\u306f\u3053\u3053\u306e\u6295\u7968\u3067\u52dd\u8ca0\u3092\u6c7a\u3081\u308b\u3079\u304d\u3060\u304b\u3089\u3067\u3059\uff01","created":"2021-10-22 21:24:43","color":"beige","job":"\u72e9\u4eba"},{"id":"1158345491","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3068\u3044\u3046\u8a33\u3067\u50d5\u304c\u72e9\u4eba\u3067\u3059\uff01","created":"2021-10-22 21:24:13","color":"beige","job":"\u72e9\u4eba"},{"id":"1158345487","from_user":"\u30c8\u30fc\u30e9\u30b9","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5360\u3044\u306e\u7d50\u679c\u3001\u3079\u3053\u3089\u3055\u3093\u306f\u767d\u3067\u3057\u305f","created":"2021-10-22 21:24:10","color":"perple","job":"\u5360\u3044\u5e2b"},{"id":"1158345471","from_user":"\u725b\u7530\u3079\u3053\u3089","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u30ca\u30a4\u30b9\uff01","created":"2021-10-22 21:24:02","color":"chocolate","job":"\u6751\u4eba"},{"id":"1158345462","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5b88\u3063\u305f\u308a\u307e\u3057\u305f\u305c\uff01","created":"2021-10-22 21:23:58","color":"beige","job":"\u72e9\u4eba"},{"id":"1158345452","from_user":"\u3042\u3042\u3042\u3042","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u72e9\u4eba\u3055\u3093\u30ca\u30a4\u30b9\uff01","created":"2021-10-22 21:23:52","color":"red","job":"\u4eba\u72fc"},{"id":"1158345446","from_user":"\u30c8\u30fc\u30e9\u30b9","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059","created":"2021-10-22 21:23:50","color":"perple","job":"\u5360\u3044\u5e2b"},{"id":"1158345438","from_user":"\u3042\u3042\u3042\u3042","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059","created":"2021-10-22 21:23:45","color":"red","job":"\u4eba\u72fc"},{"id":"1158345422","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6050\u308d\u3057\u3044\u591c\u304c\u660e\u3051\u3001\u671d\u306b\u306a\u308a\u307e\u3057\u305f\u3002","created":"2021-10-22 21:23:36","color":"skyblue","job":"\u4eba\u72fc"},{"id":"1158345421","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u72e9\u4eba\u304c\u4eba\u72fc\u304b\u3089\u5b88\u3063\u305f!","created":"2021-10-22 21:23:36","color":"skyblue","job":"\u4eba\u72fc"},{"id":"1158345420","from_user":"\u9bd6","to_user":"\u4eba\u72fc","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u30c8\u30fc\u30e9\u30b9\u3055\u3093\u3092\u565b\u307f\u307e\u3059","created":"2021-10-22 21:23:36","color":"skyblue","job":"\u4eba\u72fc"},{"id":"1158345419","from_user":"\u4eba\u72fc","to_user":"GM","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5b9f\u884c@\u3042\u3042\u3042\u3042\u2192\u30c8\u30fc\u30e9\u30b9","created":"2021-10-22 21:23:36","color":"skyblue","job":"\u4eba\u72fc"},{"id":"1158345402","from_user":"\u304a\u306b\u304e\u308a","to_user":"GM","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5b9f\u884c@\u304a\u306b\u304e\u308a\u2192\u30c8\u30fc\u30e9\u30b9","created":"2021-10-22 21:23:25","color":"beige","job":"\u72e9\u4eba"},{"id":"1158345400","from_user":"\u9bd6","to_user":"\u30c8\u30fc\u30e9\u30b9","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u725b\u7530\u3079\u3053\u3089\u3055\u3093\u306f\u4eba\u72fc\u3067\u306f\u3042\u308a\u307e\u305b\u3093","created":"2021-10-22 21:23:25","color":"skyblue","job":"\u72e9\u4eba"},{"id":"1158345399","from_user":"\u30c8\u30fc\u30e9\u30b9","to_user":"GM","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5b9f\u884c@\u30c8\u30fc\u30e9\u30b9\u2192\u725b\u7530\u3079\u3053\u3089","created":"2021-10-22 21:23:25","color":"perple","job":"\u5360\u3044\u5e2b"},{"id":"1158345373","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u591c\u306b\u306a\u308a\u307e\u3057\u305f\u2026\u5f79\u8077\u306e\u4eba\u306f\u80fd\u529b\u3092\u5b9f\u884c\u3057\u3066\u304f\u3060\u3055\u3044","created":"2021-10-22 21:23:11","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158345372","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3010\u6295\u7968\u7d50\u679c\u3011<br \/>\u304a\u306b\u304e\u308a(0\u7968)\u306e\u6295\u7968\u5148\u2192\u30a4\u30be\u30a6<br \/>\u30a4\u30be\u30a6(4\u7968)\u306e\u6295\u7968\u5148\u2192\u725b\u7530\u3079\u3053\u3089<br \/>\u30c8\u30fc\u30e9\u30b9(0\u7968)\u306e\u6295\u7968\u5148\u2192\u30a4\u30be\u30a6<br \/>\u725b\u7530\u3079\u3053\u3089(1\u7968)\u306e\u6295\u7968\u5148\u2192\u30a4\u30be\u30a6<br \/>\u3042\u3042\u3042\u3042(0\u7968)\u306e\u6295\u7968\u5148\u2192\u30a4\u30be\u30a6<br \/> \u6295\u7968\u306e\u7d50\u679c\u3010\u30a4\u30be\u30a6\u3011\u3055\u3093\u304c\u51e6\u5211\u3055\u308c\u307e\u3059","created":"2021-10-22 21:23:11","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158345371","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u30a4\u30be\u30a6\u3055\u3093\u304c\u6b7b\u4ea1\u3057\u307e\u3057\u305f","created":"2021-10-22 21:23:11","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158345370","from_user":"\u304a\u306b\u304e\u308a","to_user":"GM","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6295\u7968@\u304a\u306b\u304e\u308a\u2192\u30a4\u30be\u30a6","created":"2021-10-22 21:23:11","color":"beige","job":"\u72e9\u4eba"},{"id":"1158345368","from_user":"\u3042\u3042\u3042\u3042","to_user":"GM","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6295\u7968@\u3042\u3042\u3042\u3042\u2192\u30a4\u30be\u30a6","created":"2021-10-22 21:23:11","color":"red","job":"\u4eba\u72fc"},{"id":"1158345344","from_user":"\u30c8\u30fc\u30e9\u30b9","to_user":"GM","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6295\u7968@\u30c8\u30fc\u30e9\u30b9\u2192\u30a4\u30be\u30a6","created":"2021-10-22 21:22:59","color":"perple","job":"\u5360\u3044\u5e2b"},{"id":"1158345341","from_user":"\u30a4\u30be\u30a6","to_user":"GM","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6295\u7968@\u30a4\u30be\u30a6\u2192\u725b\u7530\u3079\u3053\u3089","created":"2021-10-22 21:22:57","color":"lightgreen","job":"\u6751\u4eba"},{"id":"1158345338","from_user":"\u725b\u7530\u3079\u3053\u3089","to_user":"GM","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6295\u7968@\u725b\u7530\u3079\u3053\u3089\u2192\u30a4\u30be\u30a6","created":"2021-10-22 21:22:57","color":"chocolate","job":"\u6751\u4eba"},{"id":"1158345302","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6295\u7968\u6642\u9593\u306b\u306a\u308a\u307e\u3057\u305f\u3002\u8a71\u3059\u306e\u3092\u3084\u3081\u3066\u304f\u3060\u3055\u3044\u3002","created":"2021-10-22 21:22:40","color":"skyblue","job":"\u6751\u4eba"},{"id":"1158345287","from_user":"\u30a4\u30be\u30a6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5f79\u304c\u3051\u3042\u308a\u306a\u306e\u3067\u3001\u6751\u4eba\u304c2\u4eba\u3044\u308b\u3053\u3068\u3082\u3042\u308a\u307e\u3059","created":"2021-10-22 21:22:33","color":"lightgreen","job":"\u6751\u4eba"},{"id":"1158345268","from_user":"\u3042\u3042\u3042\u3042","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6751\u4eba\u306f2\u4eba\u306a\u3093\u3067\u3059\u3088\u306d","created":"2021-10-22 21:22:24","color":"red","job":"\u4eba\u72fc"},{"id":"1158345243","from_user":"\u30a4\u30be\u30a6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6751\u4eba\u3067\u3059","created":"2021-10-22 21:22:11","color":"lightgreen","job":"\u6751\u4eba"},{"id":"1158345218","from_user":"\u3042\u3042\u3042\u3042","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u30a4\u30be\u30a6\u3055\u3093\u306f\u5f79\u8077\u4f55\u3067\u3059\u304b\uff1f","created":"2021-10-22 21:22:01","color":"red","job":"\u4eba\u72fc"},{"id":"1158345199","from_user":"\u30a4\u30be\u30a6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3079\u3053\u3089\u3055\u3093\u3001\u602a\u3057\u3044\u3088\u3046\u306a","created":"2021-10-22 21:21:53","color":"lightgreen","job":"\u6751\u4eba"},{"id":"1158345159","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3067\u306f\u552f\u4e00\u6751\u4eba\u3068\u306f\u8a00\u308f\u306a\u304b\u3063\u305f\u30a4\u30be\u30a6\u3055\u3093\u3067\uff01","created":"2021-10-22 21:21:31","color":"beige","job":"\u72e9\u4eba"},{"id":"1158345119","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3046\u30fc\u3093\uff65\uff65\uff65","created":"2021-10-22 21:21:14","color":"beige","job":"\u72e9\u4eba"},{"id":"1158345077","from_user":"\u725b\u7530\u3079\u3053\u3089","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6751\u4eba\u3067\u3059","created":"2021-10-22 21:21:01","color":"chocolate","job":"\u6751\u4eba"},{"id":"1158345058","from_user":"\u30a4\u30be\u30a6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u308f\u305f\u3057\u306f\u4eba\u72fc\u3067\u306f\u3042\u308a\u307e\u305b\u3093\uff01","created":"2021-10-22 21:20:53","color":"lightgreen","job":"\u6751\u4eba"},{"id":"1158345039","from_user":"\u3042\u3042\u3042\u3042","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u81ea\u5206\u306f\u6751\u4eba\u3067\u3059","created":"2021-10-22 21:20:45","color":"red","job":"\u4eba\u72fc"},{"id":"1158345028","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3042\u308c\u3070\u8a00\u3063\u3066\u8cb0\u3048\u308b\u3068","created":"2021-10-22 21:20:42","color":"beige","job":"\u72e9\u4eba"},{"id":"1158345002","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5f79\u8077\u3092\u8a00\u3046\u3053\u3068\u3067\u3059","created":"2021-10-22 21:20:28","color":"beige","job":"\u72e9\u4eba"},{"id":"1158344980","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u30ab\u30df\u30f3\u30b0\u30a2\u30a6\u30c8\u3067\u3059\u306d","created":"2021-10-22 21:20:20","color":"beige","job":"\u72e9\u4eba"},{"id":"1158344956","from_user":"\u3042\u3042\u3042\u3042","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"co\u3063\u3066\u5f79\u8077\u306e\u3053\u3068\u3067\u5408\u3063\u3066\u307e\u3059\u304b\uff1f","created":"2021-10-22 21:20:12","color":"red","job":"\u4eba\u72fc"},{"id":"1158344934","from_user":"\u30a4\u30be\u30a6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u304a\u306b\u304e\u308a\u3055\u3093\u304c\u3001\u540a\u4f4d\u7f6e\u3092\u6c7a\u3081\u3066\u3044\u305f\u3060\u3051\u307e\u3059\u304b\uff1f","created":"2021-10-22 21:20:02","color":"lightgreen","job":"\u6751\u4eba"},{"id":"1158344925","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u307a\u3053\u3089\u3055\u3093\u3068\u30a4\u30be\u30a6\u3055\u3093\u3068\u3042\u3042\u3042\u3042\u3055\u3093\u306f\u4f55\u304bco\u306a\u3069\u3042\u308a\u307e\u3059\u304b\uff1f","created":"2021-10-22 21:19:56","color":"beige","job":"\u72e9\u4eba"},{"id":"1158344725","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3042\u308a\u304c\u3068\u3046\u3054\u3056\u3044\u307e\u3059\uff01","created":"2021-10-22 21:18:30","color":"beige","job":"\u72e9\u4eba"},{"id":"1158344710","from_user":"\u30c8\u30fc\u30e9\u30b9","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u304a\u306b\u304e\u308a\u3055\u3093\u306f\u767d\u3067\u3059","created":"2021-10-22 21:18:22","color":"perple","job":"\u5360\u3044\u5e2b"},{"id":"1158344687","from_user":"\u30c8\u30fc\u30e9\u30b9","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u79c1\u5360\u3044\u5e2b\u3067\u3059","created":"2021-10-22 21:18:11","color":"perple","job":"\u5360\u3044\u5e2b"},{"id":"1158344686","from_user":"\u725b\u7530\u3079\u3053\u3089","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059","created":"2021-10-22 21:18:10","color":"chocolate","job":"\u6751\u4eba"},{"id":"1158344668","from_user":"\u30a4\u30be\u30a6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059","created":"2021-10-22 21:18:01","color":"lightgreen","job":"\u6751\u4eba"},{"id":"1158344660","from_user":"\u30c8\u30fc\u30e9\u30b9","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002","created":"2021-10-22 21:17:56","color":"perple","job":"\u5360\u3044\u5e2b"},{"id":"1158344647","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059","created":"2021-10-22 21:17:50","color":"beige","job":"\u72e9\u4eba"},{"id":"1158344640","from_user":"\u3042\u3042\u3042\u3042","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059","created":"2021-10-22 21:17:46","color":"red","job":"\u4eba\u72fc"},{"id":"1158344634","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u6050\u308d\u3057\u3044\u591c\u304c\u660e\u3051\u3001\u671d\u306b\u306a\u308a\u307e\u3057\u305f\u3002","created":"2021-10-22 21:17:40","color":"skyblue","job":"\u4eba\u72fc"},{"id":"1158344633","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u521d\u65e5\u72a0\u7272\u8005\u3055\u3093\u304c\u6b7b\u4ea1\u3057\u307e\u3057\u305f","created":"2021-10-22 21:17:40","color":"skyblue","job":"\u4eba\u72fc"},{"id":"1158344632","from_user":"\u9bd6","to_user":"\u4eba\u72fc","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u521d\u65e5\u72a0\u7272\u8005\u3055\u3093\u3092\u565b\u307f\u307e\u3059","created":"2021-10-22 21:17:40","color":"skyblue","job":"\u4eba\u72fc"},{"id":"1158344631","from_user":"\u4eba\u72fc","to_user":"GM","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5b9f\u884c@\u3042\u3042\u3042\u3042\u2192\u521d\u65e5\u72a0\u7272\u8005","created":"2021-10-22 21:17:40","color":"skyblue","job":"\u4eba\u72fc"},{"id":"1158344620","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"15\u79d2\u7d4c\u904e\u3059\u308b\u307e\u3067\u306f\u565b\u3081\u307e\u305b\u3093","created":"2021-10-22 21:17:35","color":"skyblue","job":"\u4eba\u72fc"},{"id":"1158344580","from_user":"\u521d\u65e5\u72a0\u7272\u8005","to_user":"GM","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5b9f\u884c@\u521d\u65e5\u72a0\u7272\u8005\u2192\u30c8\u30fc\u30e9\u30b9","created":"2021-10-22 21:17:23","color":"orange","job":"\u72c2\u4eba"},{"id":"1158344579","from_user":"\u9bd6","to_user":"\u30c8\u30fc\u30e9\u30b9","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u304a\u306b\u304e\u308a\u3055\u3093\u306f\u4eba\u72fc\u3067\u306f\u3042\u308a\u307e\u305b\u3093","created":"2021-10-22 21:17:23","color":"skyblue","job":"\u72c2\u4eba"},{"id":"1158344578","from_user":"\u30c8\u30fc\u30e9\u30b9","to_user":"GM","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5b9f\u884c@\u30c8\u30fc\u30e9\u30b9\u2192\u304a\u306b\u304e\u308a","created":"2021-10-22 21:17:23","color":"perple","job":"\u5360\u3044\u5e2b"},{"id":"1158344577","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u591c\u306b\u306a\u308a\u307e\u3057\u305f\u2026\u5f79\u8077\u306e\u4eba\u306f\u80fd\u529b\u3092\u5b9f\u884c\u3057\u3066\u304f\u3060\u3055\u3044","created":"2021-10-22 21:17:23","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158344576","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u30b2\u30fc\u30e0\u3092\u958b\u59cb\u3057\u307e\u3059","created":"2021-10-22 21:17:23","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158344575","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5f79\u8077\u8a2d\u5b9a\u3010\u4eba\u72fc-1,\u5360\u3044\u5e2b-1,\u72e9\u4eba-1,\u72c2\u4eba-1,\u6751\u4eba-2,\u5f79\u6b20\u3051:\u3042\u308a\u3011","created":"2021-10-22 21:17:23","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158344574","from_user":"\u9bd6","to_user":"\u304a\u306b\u304e\u308a","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3042\u306a\u305f\u306f\u3010\u72e9\u4eba\u3011\u3067\u3059","created":"2021-10-22 21:17:23","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158344573","from_user":"\u9bd6","to_user":"\u521d\u65e5\u72a0\u7272\u8005","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3042\u306a\u305f\u306f\u3010\u72c2\u4eba\u3011\u3067\u3059","created":"2021-10-22 21:17:23","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158344572","from_user":"\u9bd6","to_user":"\u30a4\u30be\u30a6","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3042\u306a\u305f\u306f\u3010\u6751\u4eba\u3011\u3067\u3059","created":"2021-10-22 21:17:23","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158344571","from_user":"\u9bd6","to_user":"\u30c8\u30fc\u30e9\u30b9","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3042\u306a\u305f\u306f\u3010\u5360\u3044\u5e2b\u3011\u3067\u3059","created":"2021-10-22 21:17:23","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158344570","from_user":"\u9bd6","to_user":"\u725b\u7530\u3079\u3053\u3089","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3042\u306a\u305f\u306f\u3010\u6751\u4eba\u3011\u3067\u3059","created":"2021-10-22 21:17:23","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158344569","from_user":"\u9bd6","to_user":"\u3042\u3042\u3042\u3042","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3042\u306a\u305f\u306f\u3010\u4eba\u72fc\u3011\u3067\u3059","created":"2021-10-22 21:17:23","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158344564","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3067\u306f\u59cb\u3081\u307e\u3059\uff01","created":"2021-10-22 21:17:19","color":"beige","job":"\u72e9\u4eba"},{"id":"1158344531","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5f79\u6b20\u3051\u3092\u30a2\u30ea\u306b\u3057\u3066\u884c\u3044\u305f\u3044\u3068\u601d\u3044\u307e\u3059\uff01","created":"2021-10-22 21:16:56","color":"beige","job":"\u72e9\u4eba"},{"id":"1158344477","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5f79\u8077\u8a2d\u5b9a\u3010\u4eba\u72fc-1,\u5360\u3044\u5e2b-1,\u72e9\u4eba-1,\u72c2\u4eba-1,\u5f79\u6b20\u3051:\u3042\u308a\u3011\u6751\u8a2d\u5b9a\u3010\u518d\u6295\u7968:\u30aa\u30d5,\u30ef\u30f3\u30ca\u30a4\u30c8:\u30aa\u30d5,\u767d\u30e9\u30f3\u30c0\u30e0:\u30aa\u30f3\u3011\u306b\u5909\u66f4\u3057\u307e\u3057\u305f","created":"2021-10-22 21:16:26","color":"skyblue","job":"\u72e9\u4eba"},{"id":"1158344441","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"5\u4eba\u306b\u306a\u3063\u305f\u306e\u3067\u3001\u901a\u5e38\u306e\u4eba\u72fc\u3092\u59cb\u3081\u307e\u3059\uff01","created":"2021-10-22 21:16:10","color":"beige","job":"\u72e9\u4eba"},{"id":"1158344404","from_user":"\u30a4\u30be\u30a6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"5\u4eba\u306b\u306a\u308a\u307e\u3057\u305f\u306d","created":"2021-10-22 21:15:51","color":"lightgreen","job":"\u6751\u4eba"},{"id":"1158344400","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u4eba\u72fc\u30aa\u30f3\u30e9\u30a4\u30f3\u3067\u3082\u3067\u304d\u308b\u3088\u3046\u3067\u3059","created":"2021-10-22 21:15:49","color":"beige","job":"\u72e9\u4eba"},{"id":"1158344381","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u30ef\u30fc\u30c9\u30a6\u30eb\u30d5\u306f\u4eba\u72fc\u306b\u4f3c\u305f\u5225\u306e\u30b2\u30fc\u30e0\u3067\u3059\u306d","created":"2021-10-22 21:15:36","color":"beige","job":"\u72e9\u4eba"},{"id":"1158344340","from_user":"\u30a4\u30be\u30a6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u305d\u308c\u306f\u306a\u3093\u3067\u3059\u304b\uff1f","created":"2021-10-22 21:15:18","color":"lightgreen","job":"\u6751\u4eba"},{"id":"1158344331","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u3042\u3042\u3042\u3042\u3055\u3093\u304c\u5165\u5ba4\u3057\u307e\u3057\u305f","created":"2021-10-22 21:15:11","color":"skyblue","job":"\u6751\u4eba"},{"id":"1158344217","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5f85\u3063\u3066\u308b\u9593\u4f55\u3082\u3057\u306a\u3044\u306e\u3082\u6642\u9593\u306e\u7121\u99c4\u9063\u3044\u306a\u306e\u3067\u3001\u30ef\u30fc\u30c9\u30a6\u30eb\u30d5\u3067\u3082\u3057\u3066\u307f\u307e\u3059\u304b\uff1f","created":"2021-10-22 21:14:14","color":"beige","job":"\u72e9\u4eba"},{"id":"1158343733","from_user":"\u304a\u306b\u304e\u308a","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"4\u4eba\u3067\u306f\u307e\u3060\u51fa\u6765\u306a\u3044\u3067\u3059\u306d\uff65\uff65\uff65","created":"2021-10-22 21:10:21","color":"beige","job":"\u72e9\u4eba"},{"id":"1158343393","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u725b\u7530\u3079\u3053\u3089\u3055\u3093\u304c\u5165\u5ba4\u3057\u307e\u3057\u305f","created":"2021-10-22 21:08:00","color":"skyblue","job":"\u72e9\u4eba"},{"id":"1158343338","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u30c8\u30fc\u30e9\u30b9\u3055\u3093\u304c\u5165\u5ba4\u3057\u307e\u3057\u305f","created":"2021-10-22 21:07:35","color":"skyblue","job":"\u72e9\u4eba"},{"id":"1158342356","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u30a4\u30be\u30a6\u3055\u3093\u304c\u5165\u5ba4\u3057\u307e\u3057\u305f","created":"2021-10-22 21:00:09","color":"skyblue","job":"\u72e9\u4eba"},{"id":"1158340400","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u5f79\u8077\u8a2d\u5b9a\u3010\u4eba\u72fc-1,\u5360\u3044\u5e2b-1,\u72e9\u4eba-1,\u72c2\u4eba-1,\u5f79\u6b20\u3051:\u306a\u3057\u3011\u6751\u8a2d\u5b9a\u3010\u518d\u6295\u7968:\u30aa\u30d5,\u30ef\u30f3\u30ca\u30a4\u30c8:\u30aa\u30d5,\u767d\u30e9\u30f3\u30c0\u30e0:\u30aa\u30f3\u3011\u306b\u5909\u66f4\u3057\u307e\u3057\u305f","created":"2021-10-22 20:44:02","color":"skyblue","job":"\u72e9\u4eba"},{"id":"1158340245","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u30ef\u30fc\u30c9\u30a6\u30eb\u30d5\u30e2\u30fc\u30c9\u3092\u30aa\u30d5\u306b\u3057\u307e\u3057\u305f","created":"2021-10-22 20:42:52","color":"skyblue","job":"\u72e9\u4eba"},{"id":"1158339776","from_user":"\u9bd6","to_user":"ALL","room_name":"\u6e15\u7530\u7814\u6751-49","message":"\u304a\u306b\u304e\u308a\u3055\u3093\u304c\u6751\u3092\u4f5c\u6210\u3057\u307e\u3057\u305f","created":"2021-10-22 20:39:15","color":"skyblue","job":"\u72e9\u4eba"}];
+    addMessage(message);
+});
+
+function isNgWatcher() {
+    return Number($.cookie('NG_WATCHER'))==1;
+}
+
+function addMessage(json) {
+    for (var i in json) {
+        var v = json[i];
+        var bgcolor = '';
+        if (v.to_user == '霊界') {
+            bgcolor = 'gray';
+            v.color = 'white';
+        } else if (v.to_user == '人狼') {
+            //bgcolor = 'black';
+            v.color = 'red';
+        }
+        if (isNgWatcher()) {
+            if (v.job=='観戦者') { 
+               continue;
+            }
+        }
+        var text = '<div style="background-color:'+bgcolor+'"><span style="">'
+         + v.from_user;
+        if (v.to_user != 'ALL') {
+            text = text + "→" + v.to_user;
+        }
+        text = text + '</span><span class="" style="color:' + v.color + '">'
+        text = text + ": " + v.message + "</span></div>";
+        $('#message').append(text);
+    }
+}
+
+
+// ウィンドウサイズにあわせる
+function fitWindowSize() {
+    var c_height = $('html').prop('clientHeight');
+    $('#message').height(c_height - 150);
+}
+
+// スマホか判定
+function isMobile() {
+    if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) 
+        || navigator.userAgent.indexOf('iPod') > 0 
+        || navigator.userAgent.indexOf('Android') > 0) {
+        return true;
+    }
+    return false;
+}
+</script>
+
+
+            <table width="90%" class="table table-striped table-bordered tbl" cellspacing="0" cellpadding="0" border="0"><tbody>
+                    <tr>
+                        <th class="jetstrap-selected">
+                            名前
+                        </th>
+                        <th class="">
+                            状態
+                        </th>
+                    </tr>
+                        <tr>
+                        <td>
+                            <span style="color:red"
+ data-toggle="modal" onclick="confirmDialog('トリップ：3NR04m51Nb','情報','/m/log.php')"
+>ああああ</span>
+                        </td>
+                        <td>
+            死            
+                    (人狼)
+                                </td>
+                    </tr>
+                        <tr>
+                        <td>
+                            <span style=""
+ data-toggle="modal" onclick="confirmDialog('トリップ：A3ccIdYjS0','情報','/m/log.php')"
+>牛田べこら</span>
+                        </td>
+                        <td>
+            生            
+                    (村人)
+                                </td>
+                    </tr>
+                        <tr>
+                        <td>
+                            <span style=""
+ data-toggle="modal" onclick="confirmDialog('トリップ：c8mItyAGI3','情報','/m/log.php')"
+>トーラス</span>
+                        </td>
+                        <td>
+            生            
+                    (占い師)
+                                </td>
+                    </tr>
+                        <tr>
+                        <td>
+                            <span style="color:red"
+ data-toggle="modal" onclick="confirmDialog('トリップ：pHPWQrfWFq','情報','/m/log.php')"
+>イゾウ</span>
+                        </td>
+                        <td>
+            死            
+                    (村人)
+                                </td>
+                    </tr>
+                        <tr>
+                        <td>
+                            <span style="color:red"
+ data-toggle="modal" onclick="confirmDialog('トリップ：なし','情報','/m/log.php')"
+>初日犠牲者</span>
+                        </td>
+                        <td>
+            死            
+                    (狂人)
+                                </td>
+                    </tr>
+                        <tr>
+                        <td>
+                            <span style=""
+ data-toggle="modal" onclick="confirmDialog('トリップ：X0RZg8I8tP','情報','/m/log.php')"
+>おにぎり</span>
+                        </td>
+                        <td>
+            生            
+                    (狩人)
+                                </td>
+                    </tr>
+                </tbody>
+            </table>
+<h4 class="title">設定</h4>
+<table class="table table-striped table-bordered tbl" style="margin:5px">
+<tbody>
+    <tr>
+        <td>
+        観戦者非表示
+        </td>
+        <td>
+        <div id="ngWatcher-toggle-button">
+            <input type="checkbox">
+        </div>
+        </td>
+    </tr>
+</tbody>
+</table>
+<div class="footer" style="text-align:center;margin-top:30px;">
+</div>
+</body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44563960-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>人狼Online
+    </title>
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="https://s3.amazonaws.com/jetstrap-site/lib/bootstrap/2.3.0/css/bootstrap.css" rel="stylesheet">
+    <link href="https://s3.amazonaws.com/jetstrap-site/lib/bootstrap/2.3.0/css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+      </script>
+    <![endif]-->
+    <!-- Le fav and touch icons -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://s3.amazonaws.com/jetstrap-site/lib/bootstrap/2.3.0/js/bootstrap.js"></script>
+    
+    <meta name="description" content="スマホとPCでオンライン対戦できる人狼ゲームです。"/>
+    <meta name="keywords" content="人狼,ワードウルフ,iPhone,Android,スマホ,PC,オンライン,人狼Online" />
+    
+    <link rel="apple-touch-icon-precomposed" href="/img/jinro_logo.jpg">
+    <meta name="format-detection" content="telephone=no" /> 
+    <script src="/js/lib.js?3"></script>
+    <link rel="icon" href="/img/apple-touch-icon.png" type="image/png" />
+    
+    <!-- アドレスバー等のブラウザのUIを非表示 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- ホーム画面に表示されるアプリ名 -->
+    <meta name="apple-mobile-web-app-title" content="人狼Online">
+    <!-- ホーム画面に表示されるアプリアイコン -->
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <!-- ウェブアプリマニフェストの読み込み -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <meta content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport" />  
+    <meta content="yes" name="apple-mobile-web-app-capable" /> 
+    <meta name=”apple-mobile-web-app-status-bar-style” content=”black-translucent” />
+    <link rel="apple-touch-startup-image" href="/img/jinro_startup.png" sizez="640x1096">
+    <link rel="apple-touch-startup-image" href="/img/jinro_startup_640x920.png" sizez="640x920">
+    <link rel="apple-touch-icon-precomposed" href="/img/jinro_logo.jpg">
+    <script src="/js/iosFullscreen.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <link href="/css/bootstrapSwitch.css" rel="stylesheet">
+    <script src="/js/jquery.toggle.buttons.js"></script>
+    
+    
+    <link href="/css/base.css" rel="stylesheet">
+    <!-- adsense -->
+    <script data-ad-client="ca-pub-1495090989864060" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>      </head>
+<script>
+// service workerの登録関係
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service_worker.js').then(function(registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }).catch(function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+    });
+}
+// アプリに送信
+function app(msg) {
+  }
+function isApp() {
+  return false;
+}
+function isAppAnd() {
+  return false;
+}
+function isAppIos() {
+  return false;
+}
+</script>
+  <body>
+
+
+<div class="container">
+<div class="title big">
+<a href="/" class="btn">
+<i class="icon-home"></i>
+</a>
+<a class="btn" onclick="history.back()">
+<i class="icon-arrow-left"></i>
+</a>
+ログ-かねむら-2
+</div>
+
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span6">
+            <div id="message" class="message">
+                <div id="message_text">
+                
+                </div>
+            </div>
+  </div>
+  <div class="span6">
+
+<style>
+body {
+    padding-top: 0px;
+}
+#message {
+    background-color: rgba(0,0,0,0.5);/*rgba(245,249,240,1);*/
+    border-radius: 10px;
+    border: 1px solid;
+    padding: 5px;
+    margin-bottom: 5px;
+    overflow-y: scroll;
+    height:300px;
+    text-shadow: none;/*1px 1px 1px #666;*/
+    color: white;
+    font-size: x-small;
+}
+.message .from{
+font-size:x-small;
+color: #999;
+}
+.message .from-system{
+color: skyblue;
+}
+.message.text.important{
+color: red;
+}
+.message .text{
+font-size:small;
+}
+.message .text-system{
+color: skyblue;
+}
+.message .text-nonimportant{
+color: gray;
+}
+.message .text-important{
+color: red;
+}
+</style>
+<link href="/css/bootstrapSwitch.css" rel="stylesheet">
+<script src="/js/jquery.toggle.buttons.js"></script>
+<script src="/js/jquery.cookie.js"></script>
+<script>
+$(document).ready( function() {
+    // メッセージ枠の高さをブラウザの画面にあわせて変更
+    //var c_width = $('html').prop('clientWidth');
+    fitWindowSize();
+    window.onresize = function() {
+        fitWindowSize();
+    };
+
+    
+    $('#ngWatcher-toggle-button').toggleButtons('setState', $.cookie('NG_WATCHER')==1 ? true : false);
+    $('#ngWatcher-toggle-button').toggleButtons({
+      onChange: function ($el, status, e) {
+        $.cookie('NG_WATCHER', status ? 1 : 0, {expires: 3650});
+	location.reload();
+      }
+    });
+
+    var message = [{"id":"1158346555","from_user":"\u9bd6","to_user":"ALL","room_name":"\u304b\u306d\u3080\u3089-2","message":"\u4eba\u72fc\u304c\u6751\u4eba\u306e\u6570\u3088\u308a\u591a\u304f\u306a\u308a\u307e\u3057\u305f!\u3010\u4eba\u72fc\u30c1\u30fc\u30e0\u3011\u306e\u52dd\u5229\u3067\u3059!","created":"2021-10-22 21:32:32","color":"skyblue","job":null},{"id":"1158346554","from_user":"\u9bd6","to_user":"ALL","room_name":"\u304b\u306d\u3080\u3089-2","message":"\u521d\u65e5\u72a0\u7272\u8005\u3055\u3093\u304c\u6b7b\u4ea1\u3057\u307e\u3057\u305f","created":"2021-10-22 21:32:32","color":"skyblue","job":null},{"id":"1158346553","from_user":"\u9bd6","to_user":"\u4eba\u72fc","room_name":"\u304b\u306d\u3080\u3089-2","message":"\u521d\u65e5\u72a0\u7272\u8005\u3055\u3093\u3092\u565b\u307f\u307e\u3059","created":"2021-10-22 21:32:32","color":"skyblue","job":null},{"id":"1158346552","from_user":"\u4eba\u72fc","to_user":"GM","room_name":"\u304b\u306d\u3080\u3089-2","message":"\u5b9f\u884c@\u3055\u3068\u308b\u2192\u521d\u65e5\u72a0\u7272\u8005","created":"2021-10-22 21:32:32","color":"skyblue","job":null},{"id":"1158346481","from_user":"\u9bd6","to_user":"\u521d\u65e5\u72a0\u7272\u8005","room_name":"\u304b\u306d\u3080\u3089-2","message":"\u3055\u3068\u308b\u3055\u3093\u306f\u4eba\u72fc\u3067\u3059","created":"2021-10-22 21:31:58","color":"skyblue","job":null},{"id":"1158346480","from_user":"\u521d\u65e5\u72a0\u7272\u8005","to_user":"GM","room_name":"\u304b\u306d\u3080\u3089-2","message":"\u5b9f\u884c@\u521d\u65e5\u72a0\u7272\u8005\u2192\u3055\u3068\u308b","created":"2021-10-22 21:31:58","color":"perple","job":"\u5360\u3044\u5e2b"},{"id":"1158346479","from_user":"\u9bd6","to_user":"ALL","room_name":"\u304b\u306d\u3080\u3089-2","message":"\u591c\u306b\u306a\u308a\u307e\u3057\u305f\u2026\u5f79\u8077\u306e\u4eba\u306f\u80fd\u529b\u3092\u5b9f\u884c\u3057\u3066\u304f\u3060\u3055\u3044","created":"2021-10-22 21:31:58","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158346478","from_user":"\u9bd6","to_user":"ALL","room_name":"\u304b\u306d\u3080\u3089-2","message":"\u30b2\u30fc\u30e0\u3092\u958b\u59cb\u3057\u307e\u3059","created":"2021-10-22 21:31:58","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158346477","from_user":"\u9bd6","to_user":"ALL","room_name":"\u304b\u306d\u3080\u3089-2","message":"\u5f79\u8077\u8a2d\u5b9a\u3010\u4eba\u72fc-1,\u5360\u3044\u5e2b-1,\u6751\u4eba-1,\u5f79\u6b20\u3051:\u3042\u308a\u3011","created":"2021-10-22 21:31:58","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158346476","from_user":"\u9bd6","to_user":"\u308a\u3087\u3046\u3048\u3044","room_name":"\u304b\u306d\u3080\u3089-2","message":"\u3042\u306a\u305f\u306f\u3010\u6751\u4eba\u3011\u3067\u3059","created":"2021-10-22 21:31:58","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158346475","from_user":"\u9bd6","to_user":"\u521d\u65e5\u72a0\u7272\u8005","room_name":"\u304b\u306d\u3080\u3089-2","message":"\u3042\u306a\u305f\u306f\u3010\u5360\u3044\u5e2b\u3011\u3067\u3059","created":"2021-10-22 21:31:58","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158346474","from_user":"\u9bd6","to_user":"\u3055\u3068\u308b","room_name":"\u304b\u306d\u3080\u3089-2","message":"\u3042\u306a\u305f\u306f\u3010\u4eba\u72fc\u3011\u3067\u3059","created":"2021-10-22 21:31:58","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158346401","from_user":"\u9bd6","to_user":"ALL","room_name":"\u304b\u306d\u3080\u3089-2","message":"\u3055\u3068\u308b\u3055\u3093\u304c\u5165\u5ba4\u3057\u307e\u3057\u305f","created":"2021-10-22 21:31:25","color":"skyblue","job":"\u5360\u3044\u5e2b"},{"id":"1158345939","from_user":"\u9bd6","to_user":"ALL","room_name":"\u304b\u306d\u3080\u3089-2","message":"\u30ed\u30b0\u306f\u3053\u3061\u3089\u304b\u3089\u2192<a class=\"btn btn-mini btn-primary\" target=\"_blank\" href=\"log.php?id=799930\">\u30ed\u30b0<\/a>","created":"2021-10-22 21:27:57","color":"skyblue","job":"\u5360\u3044\u5e2b"}];
+    addMessage(message);
+});
+
+function isNgWatcher() {
+    return Number($.cookie('NG_WATCHER'))==1;
+}
+
+function addMessage(json) {
+    for (var i in json) {
+        var v = json[i];
+        var bgcolor = '';
+        if (v.to_user == '霊界') {
+            bgcolor = 'gray';
+            v.color = 'white';
+        } else if (v.to_user == '人狼') {
+            //bgcolor = 'black';
+            v.color = 'red';
+        }
+        if (isNgWatcher()) {
+            if (v.job=='観戦者') { 
+               continue;
+            }
+        }
+        var text = '<div style="background-color:'+bgcolor+'"><span style="">'
+         + v.from_user;
+        if (v.to_user != 'ALL') {
+            text = text + "→" + v.to_user;
+        }
+        text = text + '</span><span class="" style="color:' + v.color + '">'
+        text = text + ": " + v.message + "</span></div>";
+        $('#message').append(text);
+    }
+}
+
+
+// ウィンドウサイズにあわせる
+function fitWindowSize() {
+    var c_height = $('html').prop('clientHeight');
+    $('#message').height(c_height - 150);
+}
+
+// スマホか判定
+function isMobile() {
+    if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) 
+        || navigator.userAgent.indexOf('iPod') > 0 
+        || navigator.userAgent.indexOf('Android') > 0) {
+        return true;
+    }
+    return false;
+}
+</script>
+
+
+            <table width="90%" class="table table-striped table-bordered tbl" cellspacing="0" cellpadding="0" border="0"><tbody>
+                    <tr>
+                        <th class="jetstrap-selected">
+                            名前
+                        </th>
+                        <th class="">
+                            状態
+                        </th>
+                    </tr>
+                        <tr>
+                        <td>
+                            <span style=""
+ data-toggle="modal" onclick="confirmDialog('トリップ：srG5EdmjXf','情報','/m/log.php')"
+>さとる</span>
+                        </td>
+                        <td>
+            生            
+                    (人狼)
+                                </td>
+                    </tr>
+                        <tr>
+                        <td>
+                            <span style="color:red"
+ data-toggle="modal" onclick="confirmDialog('トリップ：なし','情報','/m/log.php')"
+>初日犠牲者</span>
+                        </td>
+                        <td>
+            死            
+                    (占い師)
+                                </td>
+                    </tr>
+                        <tr>
+                        <td>
+                            <span style=""
+ data-toggle="modal" onclick="confirmDialog('トリップ：KYQamybxO3','情報','/m/log.php')"
+>りょうえい</span>
+                        </td>
+                        <td>
+            生            
+                    (村人)
+                                </td>
+                    </tr>
+                </tbody>
+            </table>
+<h4 class="title">設定</h4>
+<table class="table table-striped table-bordered tbl" style="margin:5px">
+<tbody>
+    <tr>
+        <td>
+        観戦者非表示
+        </td>
+        <td>
+        <div id="ngWatcher-toggle-button">
+            <input type="checkbox">
+        </div>
+        </td>
+    </tr>
+</tbody>
+</table>
+<div class="footer" style="text-align:center;margin-top:30px;">
+</div>
+</body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44563960-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</html>
