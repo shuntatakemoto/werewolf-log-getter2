@@ -1,7 +1,7 @@
 import re
 import json
 
-for i in range(1, 17):
+for i in range(1, 31):
     log_data = {}
     message_data = []
     str = ""
@@ -34,6 +34,6 @@ for i in range(1, 17):
     log_data["winner"] = winner
     log_data["message"] = message_data
 
-    if is_eliminated == -1 and len(str) >= 12000 and winner != "":
+    if is_eliminated == -1 and len(str) >= 15000 and winner != "":
         with open("json/log-{}.json".format(i), "w") as f:
             log_json = json.dump(log_data, f, indent=4, ensure_ascii=False)
