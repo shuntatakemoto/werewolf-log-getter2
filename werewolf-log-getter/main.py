@@ -1,19 +1,20 @@
 import re
 import json
 
-for i in range(16, 17):
+for i in range(1, 17):
     log_data = {}
     message_data = []
-    # print("{}番目のゲームの会話".format(i))
-
     str = ""
     with open("log/log-{}.txt".format(i)) as f:
         for s in f:
             str += s
     str = str.replace(':null', ':"null"')
+    eliminated_str = "公開されていない村です"
     pat = "var message = (\[[^\]]+\])"
     pat2 = re.compile(pat, re.MULTILINE)
     ret = pat2.search(str)
+    is_eliminated = str.find(eliminated_str)
+
     if ret:
         str2 = ret.group(1)
         b = eval(str2)
@@ -24,8 +25,7 @@ for i in range(16, 17):
 
     log_data["log_id"] = i
     log_data["message"] = message_data
-    print(log_data)
 
-    with open("json/log-{}.json".format(i), "w") as f:
-        log_json = json.dump(log_data, f, indent=4, ensure_ascii=False)
-        print(log_data)
+    if is_eliminated == -1 and len(str) >= 12000:
+        with open("json/log-{}.json".format(i), "w") as f:
+            log_json = json.dump(log_data, f, indent=4, ensure_ascii=False)
