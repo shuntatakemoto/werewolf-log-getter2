@@ -1,10 +1,11 @@
 import re
+import json
 
-message_data = []
-for i in range(799930, 799936):
-    # game_id = "{}番目のゲームの会話".format(i)
-    # message_data.append(game_id)
-    print("{}番目のゲームの会話".format(i))
+for i in range(16, 17):
+    log_data = {}
+    message_data = []
+    # print("{}番目のゲームの会話".format(i))
+
     str = ""
     with open("log/log-{}.txt".format(i)) as f:
         for s in f:
@@ -17,11 +18,14 @@ for i in range(799930, 799936):
         str2 = ret.group(1)
         b = eval(str2)
         n = len(b)
-        for i in range(n):
-            # data = [i, b[i]["from_user"], "->", b[i]
-            #         ["to_user"], b[i]["job"], b[i]["message"]]
-            # message_data.append(data)
-            print(i, b[i]["from_user"], "->", b[i]
-                  ["to_user"], b[i]["job"], b[i]["message"])
+        for j in range(n):
+            message_data.append([j, b[j]["from_user"], "->", b[j]
+                                 ["to_user"], b[j]["job"], b[j]["message"]])
 
-# print(message_data)
+    log_data["log_id"] = i
+    log_data["message"] = message_data
+    print(log_data)
+
+    with open("json/log-{}.json".format(i), "w") as f:
+        log_json = json.dump(log_data, f, indent=4)
+        print(log_data)
