@@ -27,5 +27,5 @@ for i in range(16, 17):
     print(log_data)
 
     with open("json/log-{}.json".format(i), "w") as f:
-        log_json = json.dump(log_data, f, indent=4)
+        log_json = json.dump(log_data, f, indent=4, ensure_ascii=False)
         print(log_data)
