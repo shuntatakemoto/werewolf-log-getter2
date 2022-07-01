@@ -4,9 +4,10 @@ import json
 eliminated_str = "公開されていない村です"
 white_win = "人狼が全滅しました!【村人チーム】の勝利です!"
 black_win = "人狼が村人の数より多くなりました!【人狼チーム】の勝利です!"
+file_number=0
 
 # for i in range(30, 31):
-for i in range(120, 122):
+for i in range(1, 31):
     log_data = {}
     message_data = []
     str = ""
@@ -40,5 +41,6 @@ for i in range(120, 122):
         log_data["message"] = message_data
 
     if is_eliminated == -1 and len(str) >= 15000 and winner != "":
-        with open("json/log-{}.json".format(i), "w") as f:
+        file_number+=1
+        with open("json/log-{}.json".format(file_number), "w") as f:
             log_json = json.dump(log_data, f, indent=4, ensure_ascii=False)
